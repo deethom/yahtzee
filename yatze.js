@@ -1,6 +1,7 @@
 
 //var roller = document.getElementById("roller");
 var startGame = document.getElementById("startGame");
+let possibleScores = [];
 /* roller.addEventListener(
    "click", 
    function () {
@@ -163,7 +164,7 @@ function playGame() {
      }*/
     //1st roll
     roll();
-     
+
     //2nd roll
 
     //3rd roll
@@ -193,44 +194,44 @@ function roll() {
   //1st turn
   roller.addEventListener("click", function () {
     //rollDice();
-    
-    
+
+
     var die01_cb = document.getElementById('die01_cb');
     var die02_cb = document.getElementById('die02_cb');
     var die03_cb = document.getElementById('die03_cb');
     var die04_cb = document.getElementById('die04_cb');
     var die05_cb = document.getElementById('die05_cb');
     var diceValues = [];
-    for (let i = 1; i <= 5; i++){
-        
-          if (document.getElementById('die0'+i+'_cb').checked == false){
-            Dice.showDie("die0"+i, Dice.roll());
-            document.getElementById("die0"+i).style.opacity = "100%";
-            diceValues.push(document.getElementById('die0'+i).children[0].getElementsByTagName('div').length / 2) ;
-          }
-          else{
-            document.getElementById("die0"+i).style.opacity = "50%";
-          }
-            
-        
+    for (let i = 1; i <= 5; i++) {
+
+      if (document.getElementById('die0' + i + '_cb').checked == false) {
+        Dice.showDie("die0" + i, Dice.roll());
+        document.getElementById("die0" + i).style.opacity = "100%";
+        diceValues.push(document.getElementById('die0' + i).children[0].getElementsByTagName('div').length / 2);
+      }
+      else {
+        document.getElementById("die0" + i).style.opacity = "50%";
+      }
+
+
 
     }
-    
+
     var die01Value = (document.getElementById('die01').children[0].getElementsByTagName('div').length) / 2;
     var die02Value = (document.getElementById('die02').children[0].getElementsByTagName('div').length) / 2;
     var die03Value = (document.getElementById('die03').children[0].getElementsByTagName('div').length) / 2;
     var die04Value = (document.getElementById('die04').children[0].getElementsByTagName('div').length) / 2;
     var die05Value = (document.getElementById('die05').children[0].getElementsByTagName('div').length) / 2;
 
-    allDiceValues = [die01Value,die02Value,die03Value,die04Value,die05Value];
+    allDiceValues = [die01Value, die02Value, die03Value, die04Value, die05Value];
 
-    console.log("OG: "+diceValues);
-    var possibleScores = getPossibleScores(allDiceValues);
+    console.log("OG: " + diceValues);
+    possibleScores = getPossibleScores(allDiceValues);
     updateScoreBoard(possibleScores);
 
     //wait for user input on which thing they select
     document.getElementById("dicePrompt").style.visibility = "visible";
-     
+
 
 
 
@@ -238,68 +239,26 @@ function roll() {
   });
 }
 function updateScoreBoard(possibleScores) {
-  console.log(possibleScores);
-  for (let i = 0; i < possibleScores.length; i++) {
-    switch (possibleScores[i][0]) {
-      case 'ones':
-        document.getElementById("player1_ones").innerHTML = possibleScores[i][1];
-        break;
-      case 'twos':
-        document.getElementById("player1_twos").innerHTML = possibleScores[i][1];
-
-        break;
-      case 'threes':
-        document.getElementById("player1_threes").innerHTML = possibleScores[i][1];
-
-        break;
-      case 'fours':
-        document.getElementById("player1_fours").innerHTML = possibleScores[i][1];
-
-        break;
-      case 'fives':
-        document.getElementById("player1_fives").innerHTML = possibleScores[i][1];
-
-        break;
-      case 'sixes':
-        document.getElementById("player1_sixes").innerHTML = possibleScores[i][1];
-
-        break;
-      case 'threeOfA_Kind':
-        document.getElementById("player1_threeOfA_Kind").innerHTML = possibleScores[i][1];
-
-        break;
-      case 'fourOfA_Kind':
-        document.getElementById("player1_fourOfA_Kind").innerHTML = possibleScores[i][1];
-
-        break;
-      case 'fullHouse':
-        document.getElementById("player1_fullHouse").innerHTML = possibleScores[i][1];
-
-        break;
-      case 'smallSraight':
-        document.getElementById("player1_smallSraight").innerHTML = possibleScores[i][1];
-
-        break;
-      case 'largeStraight':
-        document.getElementById("player1_largeStraight").innerHTML = possibleScores[i][1];
-
-        break;
-      case 'chance':
-        document.getElementById("player1_chance").innerHTML = possibleScores[i][1];
-
-        break;
-      case 'yahtzee':
-        document.getElementById("player1_yahtzee").innerHTML = possibleScores[i][1];
-
-        break;
-
-    }
-  }
+  document.getElementById("player1_ones").innerHTML = possibleScores[1];
+  document.getElementById("player1_twos").innerHTML = possibleScores[2];
+  document.getElementById("player1_threes").innerHTML = possibleScores[3];
+  document.getElementById("player1_fours").innerHTML = possibleScores[4];
+  document.getElementById("player1_fives").innerHTML = possibleScores[5];
+  document.getElementById("player1_sixes").innerHTML = possibleScores[6];
+  document.getElementById("player1_threeOfA_Kind").innerHTML = possibleScores[7];
+  document.getElementById("player1_fourOfA_Kind").innerHTML = possibleScores[8];
+  document.getElementById("player1_fullHouse").innerHTML = possibleScores[9];
+  document.getElementById("player1_smallStraight").innerHTML = possibleScores[10];
+  document.getElementById("player1_largeStraight").innerHTML = possibleScores[11];
+  document.getElementById("player1_chance").innerHTML = possibleScores[12];
+  document.getElementById("player1_yahtzee").innerHTML = possibleScores[13];
 }
+
+
 function getPossibleScores(diceCombination) {
+
   diceCombination.sort();
-  console.log("sorted: "+diceCombination);
-  const possibleScores = [];
+  console.log("sorted: " + diceCombination);
   var counter = 0;
   var scored = false;
   let combinationSum = 0;
@@ -307,472 +266,167 @@ function getPossibleScores(diceCombination) {
     combinationSum += diceCombination[i];
   }
 
-  possibleScores.push(["chance", combinationSum * 1]);
-
-  //GAME HANDS HERE**********************************************************************************
-
-  //UPPER SECTION RULES
-  //ONES
-  counter = 1;
-  scoredN = false;
-  scoredThreeOfA_Kind = false;
-  scoredFourOfA_Kind = false;
-  scoredFullHouse = false;
-  scoredYahtzee = false;
-
-  for (let i = 0; i < diceCombination.length; i++) {
-    if (diceCombination[i] == 1) {
-
-      if (diceCombination[i + 1] == 1) {
-        counter++;
-        continue;
-      }
-      possibleScores.push(["ones", counter * 1]);
-      scoredN = true;
-      //THREE OF A KIND
-      if (counter == 3) {
-
-        possibleScores.push(["threeOfA_Kind", combinationSum * 1]);
-        scoredThreeOfA_Kind = true;
-
-        //FULL HOUSE
-        if (diceCombination[0] == diceCombination[2]) {
-          if (diceCombination[3] == diceCombination[4]) {
-            possibleScores.push(["fullHouse", 25 * 1]);
-            scoredFullHouse = true;
-          }
-        }
-        if (diceCombination[4] == diceCombination[2]) {
-          if (diceCombination[0] == diceCombination[1]) {
-            possibleScores.push(["fullHouse", 25 * 1]);
-            scoredFullHouse = true;
-          }
-        }
-
-        //END OF FULL HOUSE
-
-      }
-
-      //FOUR OF A KIND
-      if (counter == 4) {
-
-        possibleScores.push(["fourOfA_Kind", combinationSum * 1]);
-        scoredFourOfA_Kind = true;
-      }
-      if (counter == 5) {
-
-        possibleScores.push(["yahtzee", 50 * 1]);
-        scoredYahtzee = true;
-      }
-    }
-
+  for (let i = 1; i <= 6; i++) {
+    console.log("possible scores: before runN, i= "+i+" possibleScores: "+possibleScores);
+    getRunOfN(i, diceCombination, possibleScores, combinationSum);
+    console.log("possible scores: after runN: "+possibleScores);
 
   }
-  switch (false) {
-    case scoredN:
-      possibleScores.push(["ones", ""]);
-      break;
-    case scoredThreeOfA_Kind:
-      possibleScores.push(["threeOfA_Kind", ""]);
-      break;
-    case scoredFullHouse:
-      possibleScores.push(["fullHouse", ""]);
-      break;
-    case scoredFourOfA_Kind:
-      possibleScores.push(["fourOfA_Kind", ""]);
-      break;
-    case scoredYahtzee:
-      possibleScores.push(["yahtzee", ""]);
-      break;
+
+
+  //general function for runOfN,
+  //calls general fcn for 3 of a kind
+  //" " for 4 of a kind
+  //" " for full house
+  //function to do yahtzee
+  //function to do straights
+
+
+
+
+  possibleScores[12] = combinationSum * 1;
+  straightCounter = 0;
+
+  
+  var smallStraightNoDups = [...new Set(diceCombination)];
+  var largeStraightNoDups = [...new Set(diceCombination)];
+
+  var smallStraightRightLength = smallStraightNoDups.length==4;
+  var largeStraightRightLength = largeStraightNoDups.length==5;
+  
+
+  var isSmallStraight = (smallStraightRightLength && isConsecArray(smallStraightNoDups));
+  var isLargeStraight = (largeStraightRightLength && isConsecArray(largeStraightNoDups));
+
+  if (isSmallStraight){
+    possibleScores[10] = 30;
   }
 
-
-
-  //TWOS
-  counter = 1;
-  scoredN = false;
-  scoredThreeOfA_Kind = false;
-  scoredFourOfA_Kind = false;
-  scoredFullHouse = false;
-  scoredYahtzee = false;
-
-  for (let i = 0; i < diceCombination.length; i++) {
-    if (diceCombination[i] == 2) { //change here
-
-      if (diceCombination[i + 1] == 2) { //change here
-        counter++;
-        continue;
-      }
-      possibleScores.push(["twos", counter * 2]); //change herex2
-      scoredN = true;
-      //THREE OF A KIND
-      if (counter == 3) {
-
-        possibleScores.push(["threeOfA_Kind", combinationSum * 1]);
-        scoredThreeOfA_Kind = true;
-
-        //FULL HOUSE
-        if (diceCombination[0] == diceCombination[2]) {
-          if (diceCombination[3] == diceCombination[4]) {
-            possibleScores.push(["fullHouse", 25 * 1]);
-            scoredFullHouse = true;
-          }
-        }
-        if (diceCombination[4] == diceCombination[2]) {
-          if (diceCombination[0] == diceCombination[1]) {
-            possibleScores.push(["fullHouse", 25 * 1]);
-            scoredFullHouse = true;
-          }
-        }
-
-        //END OF FULL HOUSE
-
-      }
-
-      //FOUR OF A KIND
-      if (counter == 4) {
-
-        possibleScores.push(["fourOfA_Kind", combinationSum * 1]);
-        scoredFourOfA_Kind = true;
-      }
-      if (counter == 5) {
-
-        possibleScores.push(["yahtzee", 50 * 1]);
-        scoredYahtzee = true;
-      }
-    }
-
-
-  }
-  switch (false) {
-    case scoredN:
-      possibleScores.push(["twos", ""]); //change here
-      break;
-    case scoredThreeOfA_Kind:
-      possibleScores.push(["threeOfA_Kind", ""]);
-      break;
-    case scoredFullHouse:
-      possibleScores.push(["fullHouse", ""]);
-      break;
-    case scoredFourOfA_Kind:
-      possibleScores.push(["fourOfA_Kind", ""]);
-      break;
-    case scoredYahtzee:
-      possibleScores.push(["yahtzee", ""]);
-      break;
-  }
-  //Threes
-  counter = 1;
-  scoredN = false;
-  scoredThreeOfA_Kind = false;
-  scoredFourOfA_Kind = false;
-  scoredFullHouse = false;
-  scoredYahtzee = false;
-
-  for (let i = 0; i < diceCombination.length; i++) {
-    if (diceCombination[i] == 3) { //change here
-
-      if (diceCombination[i + 1] == 3) { //change here
-        counter++;
-        continue;
-      }
-      possibleScores.push(["threes", counter * 3]); //change herex2
-      scoredN = true;
-      //THREE OF A KIND
-      if (counter == 3) {
-
-        possibleScores.push(["threeOfA_Kind", combinationSum * 1]);
-        scoredThreeOfA_Kind = true;
-
-        //FULL HOUSE
-        if (diceCombination[0] == diceCombination[2]) {
-          if (diceCombination[3] == diceCombination[4]) {
-            possibleScores.push(["fullHouse", 25 * 1]);
-            scoredFullHouse = true;
-          }
-        }
-        if (diceCombination[4] == diceCombination[2]) {
-          if (diceCombination[0] == diceCombination[1]) {
-            possibleScores.push(["fullHouse", 25 * 1]);
-            scoredFullHouse = true;
-          }
-        }
-
-        //END OF FULL HOUSE
-
-      }
-
-      //FOUR OF A KIND
-      if (counter == 4) {
-
-        possibleScores.push(["fourOfA_Kind", combinationSum * 1]);
-        scoredFourOfA_Kind = true;
-      }
-      if (counter == 5) {
-
-        possibleScores.push(["yahtzee", 50 * 1]);
-        scoredYahtzee = true;
-      }
-    }
-
-
-  }
-  switch (false) {
-    case scoredN:
-      possibleScores.push(["threes", ""]); //change here
-      break;
-    case scoredThreeOfA_Kind:
-      possibleScores.push(["threeOfA_Kind", ""]);
-      break;
-    case scoredFullHouse:
-      possibleScores.push(["fullHouse", ""]);
-      break;
-    case scoredFourOfA_Kind:
-      possibleScores.push(["fourOfA_Kind", ""]);
-      break;
-    case scoredYahtzee:
-      possibleScores.push(["yahtzee", ""]);
-      break;
-  }
-  //FOURS
-  counter = 1;
-  scoredN = false;
-  scoredThreeOfA_Kind = false;
-  scoredFourOfA_Kind = false;
-  scoredFullHouse = false;
-  scoredYahtzee = false;
-
-  for (let i = 0; i < diceCombination.length; i++) {
-    if (diceCombination[i] == 4) { //change here
-
-      if (diceCombination[i + 1] == 4) { //change here
-        counter++;
-        continue;
-      }
-      possibleScores.push(["twos", counter * 4]); //change herex2
-      scoredN = true;
-      //THREE OF A KIND
-      if (counter == 3) {
-
-        possibleScores.push(["threeOfA_Kind", combinationSum * 1]);
-        scoredThreeOfA_Kind = true;
-
-        //FULL HOUSE
-        if (diceCombination[0] == diceCombination[2]) {
-          if (diceCombination[3] == diceCombination[4]) {
-            possibleScores.push(["fullHouse", 25 * 1]);
-            scoredFullHouse = true;
-          }
-        }
-        if (diceCombination[4] == diceCombination[2]) {
-          if (diceCombination[0] == diceCombination[1]) {
-            possibleScores.push(["fullHouse", 25 * 1]);
-            scoredFullHouse = true;
-          }
-        }
-
-        //END OF FULL HOUSE
-
-      }
-
-      //FOUR OF A KIND
-      if (counter == 4) {
-
-        possibleScores.push(["fourOfA_Kind", combinationSum * 1]);
-        scoredFourOfA_Kind = true;
-      }
-      if (counter == 5) {
-
-        possibleScores.push(["yahtzee", 50 * 1]);
-        scoredYahtzee = true;
-      }
-    }
-
-
-  }
-  switch (false) {
-    case scoredN:
-      possibleScores.push(["fours", ""]); //change here
-      break;
-    case scoredThreeOfA_Kind:
-      possibleScores.push(["threeOfA_Kind", ""]);
-      break;
-    case scoredFullHouse:
-      possibleScores.push(["fullHouse", ""]);
-      break;
-    case scoredFourOfA_Kind:
-      possibleScores.push(["fourOfA_Kind", ""]);
-      break;
-    case scoredYahtzee:
-      possibleScores.push(["yahtzee", ""]);
-      break;
+  if (isLargeStraight){
+    possibleScores[10] = 30;
+    possibleScores[11] = 40;
   }
 
-
-  //FIVES
-  counter = 1;
-  scoredN = false;
-  scoredThreeOfA_Kind = false;
-  scoredFourOfA_Kind = false;
-  scoredFullHouse = false;
-  scoredYahtzee = false;
-
-  for (let i = 0; i < diceCombination.length; i++) {
-    if (diceCombination[i] == 5) { //change here
-
-      if (diceCombination[i + 1] == 5) { //change here
-        counter++;
-        continue;
-      }
-      possibleScores.push(["fives", counter * 5]); //change herex2
-      scoredN = true;
-      //THREE OF A KIND
-      if (counter == 3) {
-
-        possibleScores.push(["threeOfA_Kind", combinationSum * 1]);
-        scoredThreeOfA_Kind = true;
-
-        //FULL HOUSE
-        if (diceCombination[0] == diceCombination[2]) {
-          if (diceCombination[3] == diceCombination[4]) {
-            possibleScores.push(["fullHouse", 25 * 1]);
-            scoredFullHouse = true;
-          }
-        }
-        if (diceCombination[4] == diceCombination[2]) {
-          if (diceCombination[0] == diceCombination[1]) {
-            possibleScores.push(["fullHouse", 25 * 1]);
-            scoredFullHouse = true;
-          }
-        }
-
-        //END OF FULL HOUSE
-
-      }
-
-      //FOUR OF A KIND
-      if (counter == 4) {
-
-        possibleScores.push(["fourOfA_Kind", combinationSum * 1]);
-        scoredFourOfA_Kind = true;
-      }
-      if (counter == 5) {
-
-        possibleScores.push(["yahtzee", 50 * 1]);
-        scoredYahtzee = true;
-      }
-    }
-
-
+  if (!isSmallStraight){
+    possibleScores[10] = 0;
   }
-  switch (false) {
-    case scoredN:
-      possibleScores.push(["fives", ""]); //change here
-      break;
-    case scoredThreeOfA_Kind:
-      possibleScores.push(["threeOfA_Kind", ""]);
-      break;
-    case scoredFullHouse:
-      possibleScores.push(["fullHouse", ""]);
-      break;
-    case scoredFourOfA_Kind:
-      possibleScores.push(["fourOfA_Kind", ""]);
-      break;
-    case scoredYahtzee:
-      possibleScores.push(["yahtzee", ""]);
-      break;
+  if (!isLargeStraight){
+    possibleScores[11] = 0;
   }
-  //SIXES
-  counter = 1;
-  scoredN = false;
-  scoredThreeOfA_Kind = false;
-  scoredFourOfA_Kind = false;
-  scoredFullHouse = false;
-  scoredYahtzee = false;
-
-  for (let i = 0; i < diceCombination.length; i++) {
-    if (diceCombination[i] == 6) { //change here
-
-      if (diceCombination[i + 1] == 6) { //change here
-        counter++;
-        continue;
-      }
-      possibleScores.push(["sixes", counter * 6]); //change herex2
-      scoredN = true;
-      //THREE OF A KIND
-      if (counter == 3) {
-
-        possibleScores.push(["threeOfA_Kind", combinationSum * 1]);
-        scoredThreeOfA_Kind = true;
-
-        //FULL HOUSE
-        if (diceCombination[0] == diceCombination[2]) {
-          if (diceCombination[3] == diceCombination[4]) {
-            possibleScores.push(["fullHouse", 25 * 1]);
-            scoredFullHouse = true;
-          }
-        }
-        if (diceCombination[4] == diceCombination[2]) {
-          if (diceCombination[0] == diceCombination[1]) {
-            possibleScores.push(["fullHouse", 25 * 1]);
-            scoredFullHouse = true;
-          }
-        }
-
-        //END OF FULL HOUSE
-
-      }
-
-      //FOUR OF A KIND
-      if (counter == 4) {
-
-        possibleScores.push(["fourOfA_Kind", combinationSum * 1]);
-        scoredFourOfA_Kind = true;
-      }
-      if (counter == 5) {
-
-        possibleScores.push(["yahtzee", 50 * 1]);
-        scoredYahtzee = true;
-      }
-    }
-
-
-  }
-  switch (false) {
-    case scoredN:
-      possibleScores.push(["sixes", ""]); //change here
-      break;
-    case scoredThreeOfA_Kind:
-      possibleScores.push(["threeOfA_Kind", ""]);
-      break;
-    case scoredFullHouse:
-      possibleScores.push(["fullHouse", ""]);
-      break;
-    case scoredFourOfA_Kind:
-      possibleScores.push(["fourOfA_Kind", ""]);
-      break;
-    case scoredYahtzee:
-      possibleScores.push(["yahtzee", ""]);
-      break;
-  }
-  //LOWER SECTION RULES ****************************************************** //
-  //SMALL STRAIGHT 
-  counter = 0;
+/*
   for (let i = 0; i < diceCombination.length - 1; i++) {
     for (let j = i + 1; j < diceCombination.length; j++) {
       if (diceCombination[i] == diceCombination[j] - 1) {
-        counter++;
+        straightCounter++;
       }
     }
 
   }
-  if (counter == 4) {
-    possibleScores.push(["smallStraight", 30 * 1]);
-  }
-  if (counter == 5) {
-    possibleScores.push(["largeStraight", 40 * 1]);
-  }
+  console.log("testing stragihts, counter = "+straightCounter);
 
+  if (straightCounter == 5) {
+    console.log("adding ss" + possibleScores[10]);
+    possibleScores[10] = 30 * 1;
+  }
+  else if (straightCounter != 6 && straightCounter < 5) {
+    possibleScores[10] = 0;
+  }
+  if (straightCounter == 6) {
+    console.log("adding ls" + possibleScores[11]);
+    possibleScores[11] = 40 * 1;
+  }
+  else if (straightCounter != 6 && straightCounter < 5) {
+    possibleScores[11] = 0;
+  }*/
 
+  console.log("all scores: " + possibleScores);
   return possibleScores;
+
+
+
+}
+function isConsecArray(arr) {
+  var previous = arr[0];
+  var i;
+  var y = (arr.length);
+  if (y > 1) {
+      for (i=1; i < y; i += 1) {
+          if (parseInt(arr[i]) -1  !== parseInt(previous)) {
+              return false;
+          }
+          previous = arr[i];        
+      }
+  }
+  return true;
+}
+//https://stackoverflow.com/questions/31094154/simple-function-to-check-if-an-array-is-consecutive ^^
+function getRunOfN(n, diceCombination, possibleScores, combinationSum) {
+  counter = 1;
+  scoredN = false;
+  scoredThreeOfA_Kind = false;
+  scoredFourOfA_Kind = false;
+  scoredFullHouse = false;
+  scoredYahtzee = false;
+
+  for (let i = 0; i < diceCombination.length; i++) {
+    if (diceCombination[i] == n) {
+
+      if (diceCombination[i + 1] == n) {
+        counter++;
+        continue;
+      }
+      possibleScores[n] = counter * n;
+      scoredN = true;
+      //THREE OF A KIND
+      if (counter == 3) {
+        possibleScores[7] = combinationSum * 1;
+        scoredThreeOfA_Kind = true;
+
+        //FULL HOUSE
+        if (diceCombination[0] == diceCombination[2]) {
+          if (diceCombination[3] == diceCombination[4]) {
+            possibleScores[9] = 25 * 1;
+            scoredFullHouse = true;
+          }
+        }
+        if (diceCombination[4] == diceCombination[2]) {
+          if (diceCombination[0] == diceCombination[1]) {
+            possibleScores[9] = 25 * 1;
+            scoredFullHouse = true;
+          }
+        }
+
+        //END OF FULL HOUSE
+
+      }
+
+      //FOUR OF A KIND
+      if (counter == 4) {
+        possibleScores[8] = combinationSum * 1;
+        scoredFourOfA_Kind = true;
+      }
+      if (counter == 5) {
+        possibleScores[13] = 50 * 1;
+        scoredYahtzee = true;
+      }
+    }
+
+
+  }
+  console.log("value of yat: " + scoredYahtzee);
+  switch (false) {
+    case scoredN:
+      console.log("writting 0 for n=" + n + ": where scoredN is: " + scoredN);
+      possibleScores[n] = 0;
+    case scoredThreeOfA_Kind:
+      possibleScores[7] = 0;
+    case scoredFullHouse:
+      possibleScores[9] = 0;
+    case scoredFourOfA_Kind:
+      possibleScores[8] = 0;
+    case scoredYahtzee:
+      console.log("why not " + scoredYahtzee)
+      possibleScores[13] = 0;
+  }
+
 }
