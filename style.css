@@ -1,0 +1,50 @@
+body{
+    background:#E0FCFF;
+}
+.board{
+    width:80%;
+    margin:0 auto;
+    background:#0A6C74;
+    height:60vh;
+    border-radius: 50px;
+    border:3px white solid;
+    box-shadow: #000 0px 0px 15px;
+    padding:3%;
+}
+.play-area{
+    width:70%;
+    float:left;
+    height:600px;
+    background:#fff;
+    margin-right: 1%;
+}
+.scorecard-area{
+    float:right;
+    margin-left: 1%;
+    background:#fff;
+    padding:0.5%;
+}
+#roller{
+    display: block;
+    margin: 0 auto;
+}
+.throwing-area{
+    height:60%;
+}
+.player-area{
+    width:50%;
+    margin:0 auto;
+}
+#startGame{
+    width:80%;
+    height:30%;
+    font-size:2em;
+    font-family: sans-serif;
+    text-align: center;
+    margin:0 auto;
+    display: block;
+    position: relative;
+    top:35%;
+    border-radius: 50px;
+    box-shadow: #2CB1BC 0px 0px 30px;
+}

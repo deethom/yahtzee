@@ -1,0 +1,77 @@
+
+.dice-container {
+  float: left;
+}
+
+.dice-group, #dicePrompt { display: table; clear: both; }
+
+.dice, #dicePrompt input{
+  margin: 4.5px;
+  position: relative;
+  width: 45px;
+  height: 45px;
+  border: 1px solid black;
+  border-radius: 6.75px;
+}
+
+.dice .middle {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+}
+
+.dice .top-left {
+  position: absolute;
+  top: 2.25px;
+  left: 2.25px;
+}
+
+.dice .top-right {
+  position: absolute;
+  top: 2.25px;
+  right: 2.25px;
+}
+
+.dice .top-middle {
+  position: absolute;
+  top: 2.25px;
+  left: 18px;
+}
+
+.dice .bottom-left {
+  position: absolute;
+  bottom: 2.25px;
+  left: 2.25px;
+}
+
+.dice .bottom-right {
+  position: absolute;
+  bottom: 2.25px;
+  right: 2.25px;
+}
+
+.dice .bottom-middle {
+  position: absolute;
+  bottom: 2.25px;
+  left: 18px;
+}
+
+.dice .middle-left {
+  position: absolute;
+  top: 18px;
+  left: 2.25px;
+}
+
+.dice .middle-right {
+  position: absolute;
+  top: 18px;
+  right: 2.25px;
+}
+
+.dot {
+  border: 1px solid black;
+  background-color: black;
+  border-radius: 50%;
+  width: 9px;
+  height: 9px; 
+}
