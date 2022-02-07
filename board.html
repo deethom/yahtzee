@@ -1,108 +1,116 @@
 <section class="play-area">
-<div class="throwing-area">
-  <div class="message-board"></div>
-</div>
-<div class="player-area">
-  <button id="roller">Roll</button>
-  <div class="dice-group">
-    <div id="die01" class="dice-container"></div>
-    <div id="die02" class="dice-container"></div>
-    <div id="die03" class="dice-container"></div>
-    <div id="die04" class="dice-container"></div>
-    <div id="die05" class="dice-container"></div>
-
+  <div class="throwing-area">
+    <div class="message-board"></div>
   </div>
-  <div id="dicePrompt"></div>
-</div>
-</section>
-<section class="scorecard-area">
-<table id="scorecard" border="1">
-  <tbody>
-    <tr>
-      <td></td>
-      <td>Player 1</td>
-      <td>Player 2</td>
-    </tr>
-    <tr>
-      <td>Ones</td>
-      <td id="player1_ones"></td>
-      <td id="player2_ones"></td>
-    </tr>
-    <tr>
-      <td>Twos</td>
-      <td id="player1_twos"></td>
-      <td id="player2_twos"></td>
-    </tr>
-    <tr>
-      <td>Threes</td>
-      <td id="player1_threes"></td>
-      <td id="player2_threes"></td>
-    </tr>
-    <tr>
-      <td>Fours</td>
-      <td id="player1_fours"></td>
-      <td id="player2_fours"></td>
-    </tr>
-    <tr>
-      <td>Fives</td>
-      <td id="player1_fives"></td>
-      <td id="player2_fives"></td>
-    </tr>
-    <tr>
-      <td>Sixes</td>
-      <td id="player1_sixes"></td>
-      <td id="player2_sixes"></td>
-    </tr>
-    <tr>
-      <td>Sum</td>
-      <td id="player1_sum"></td>
-      <td id="player2_sum"></td>
-    </tr>
-    <tr>
-      <td>Bonus</td>
-      <td id="player1_bonus"></td>
-      <td id="player2_bonus"></td>
-    </tr>
-    <tr>
-      <td>Three of a kind</td>
-      <td id="player1_threeOfA_Kind"></td>
-      <td id="player2_threeOfA_Kind"></td>
-    </tr>
-    <tr>
-      <td>Four of a kind</td>
-      <td id="player1_fourOfA_Kind"></td>
-      <td id="player2_fourOfA_Kind"></td>
-    </tr>
-    <tr>
-      <td>Full House</td>
-      <td id="player1_fullHouse"></td>
-      <td id="player2_fullHouse"></td>
-    </tr>
-    <tr>
-      <td>Small Straight</td>
-      <td id="player1_smallStraight"></td>
-      <td id="player2_smallStraight"></td>
-    </tr>
-    <tr>
-      <td>Large Straight</td>
-      <td id="player1_largeStraight"></td>
-      <td id="player2_largeStraight"></td>
-    </tr>
-    <tr>
-      <td>Chance</td>
-      <td id="player1_chance"></td>
-      <td id="player2_chance"></td>
-    </tr>
-    <tr>
-      <td>YATZE</td>
-      <td id="player1_yahtzee"></td>
-      <td id="player2_yahtzee"></td>
-    </tr>
-    <tr>
-      <td>TOTAL SCORE</td>
-      <td id="player1_totalScore"></td>
-      <td id="player1_totalScore"></td>
-    </tr>
-  </tbody>
-</table>
-</section>
+  <div class="player-area">
+    <button id="roller">Roll</button>
+    <div class="dice-group">
+      <div id="die01" class="dice-container"></div>
+      <div id="die02" class="dice-container"></div>
+      <div id="die03" class="dice-container"></div>
+      <div id="die04" class="dice-container"></div>
+      <div id="die05" class="dice-container"></div>
+  
+    </div>
+    <div id="dicePrompt" style="visibility:hidden;" ><div class="checkboxes">
+    <input type="checkbox" id="die01_cb">
+    <input type="checkbox" id="die02_cb">
+    <input type="checkbox" id="die03_cb">
+    <input type="checkbox" id="die04_cb">
+    <input type="checkbox" id="die05_cb">
+    <br>
+    <p>Please select which dice you'd like to keep</p>
+    </div></div>
+  </div>
+  </section>
+  <section class="scorecard-area">
+  <table id="scorecard" border="1">
+    <tbody>
+      <tr>
+        <td></td>
+        <td>Player 1</td>
+        <td>Player 2</td>
+      </tr>
+      <tr>
+        <td>Ones</td>
+        <td id="player1_ones"></td>
+        <td id="player2_ones"></td>
+      </tr>
+      <tr>
+        <td>Twos</td>
+        <td id="player1_twos"></td>
+        <td id="player2_twos"></td>
+      </tr>
+      <tr>
+        <td>Threes</td>
+        <td id="player1_threes"></td>
+        <td id="player2_threes"></td>
+      </tr>
+      <tr>
+        <td>Fours</td>
+        <td id="player1_fours"></td>
+        <td id="player2_fours"></td>
+      </tr>
+      <tr>
+        <td>Fives</td>
+        <td id="player1_fives"></td>
+        <td id="player2_fives"></td>
+      </tr>
+      <tr>
+        <td>Sixes</td>
+        <td id="player1_sixes"></td>
+        <td id="player2_sixes"></td>
+      </tr>
+      <tr>
+        <td>Sum</td>
+        <td id="player1_sum"></td>
+        <td id="player2_sum"></td>
+      </tr>
+      <tr>
+        <td>Bonus</td>
+        <td id="player1_bonus"></td>
+        <td id="player2_bonus"></td>
+      </tr>
+      <tr>
+        <td>Three of a kind</td>
+        <td id="player1_threeOfA_Kind"></td>
+        <td id="player2_threeOfA_Kind"></td>
+      </tr>
+      <tr>
+        <td>Four of a kind</td>
+        <td id="player1_fourOfA_Kind"></td>
+        <td id="player2_fourOfA_Kind"></td>
+      </tr>
+      <tr>
+        <td>Full House</td>
+        <td id="player1_fullHouse"></td>
+        <td id="player2_fullHouse"></td>
+      </tr>
+      <tr>
+        <td>Small Straight</td>
+        <td id="player1_smallStraight"></td>
+        <td id="player2_smallStraight"></td>
+      </tr>
+      <tr>
+        <td>Large Straight</td>
+        <td id="player1_largeStraight"></td>
+        <td id="player2_largeStraight"></td>
+      </tr>
+      <tr>
+        <td>Chance</td>
+        <td id="player1_chance"></td>
+        <td id="player2_chance"></td>
+      </tr>
+      <tr>
+        <td>YAHTZEE</td>
+        <td id="player1_yahtzee"></td>
+        <td id="player2_yahtzee"></td>
+      </tr>
+      <tr>
+        <td>TOTAL SCORE</td>
+        <td id="player1_totalScore"></td>
+        <td id="player1_totalScore"></td>
+      </tr>
+    </tbody>
+  </table>
+  </section>
